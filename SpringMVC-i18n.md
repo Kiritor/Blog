@@ -9,9 +9,9 @@ web开发中,国际化是需要考虑的一个问题,而且这个问题一般是
 <b>I18N</b>:作为"国际化"的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.
 <!-- more -->
 Spring做国际化的配置主要有3个关键点:
->*   1. ResourceBundleMessageSource:实现国际化资源的定义.
->*	 2. LocaleResolver:实现本地化信息的解析.
->*	 3. LocaleChangeInterceptor:实现本地化信息的监听(来实现url参数动态指定locale).
+>  1. ResourceBundleMessageSource:实现国际化资源的定义.
+>  2. LocaleResolver:实现本地化信息的解析.
+>  3. LocaleChangeInterceptor:实现本地化信息的监听(来实现url参数动态指定locale).
 
 ###<b>LocaleResolver</b>
 LocaleResolver是指用什么策略来检测请求是哪一种locale,Spring MVC提供了一下几种策略:
@@ -150,7 +150,7 @@ header.language=Language
 <center>![中文环境](http://kiritor.github.io/img/i18n_01.png)</center>
 可以看出当前浏览器语言顺序为中文优先,使用"切换语言"菜单手动切换系统语言为英文,之后刷新页面,界面还是为英文,当关闭此页面结束session会话,重新打开系统时界面仍为英文
 <center>![英文环境](http://kiritor.github.io/img/i18n_02.png)</center>
-&nbsp;&nbsp;&nbsp;&nbsp;而且debug可以看见cookie如图:
+而且debug可以看见cookie如图:
 <center>![cooie](http://kiritor.github.io/img/cookie.jpg)</center>
 这里需要多提及一点的是,关于基于cookie国际化的第二点,有3个属性可以配置:
 ```xml
