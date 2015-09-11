@@ -4,6 +4,8 @@ tags: [i18n,velocity]
 categories: work
 ---
 &nbsp;&nbsp;&nbsp;&nbsp;web开发中,国际化是需要考虑的一个问题,而且这个问题一般是越早敲定越好(不然等到系统大了,翻译是个问题).下面是结合实际项目(Spring MVC+Velocity)对实现国际化的一些总结,项目地址:[https://github.com/kiritor/hr](https://github.com/kiritor/hr)
+
+&nbsp;&nbsp;&nbsp;&nbsp;需要说明的是,该项目使用的是基于Cookie的国际化配置,其他方式参考本文.
 ##Spring国际化
 &nbsp;&nbsp;&nbsp;&nbsp;<b>I18N</b>:作为"国际化"的简称,其来源是英文单词internationalization的首末字符i和n,18为中间的字符数.
 
@@ -212,3 +214,7 @@ public class MyAcceptHeadersolver extends AcceptHeaderLocaleResolver{
 &nbsp;&nbsp;&nbsp;&nbsp;输入地址:http://localhost:9999/hr/auth/user/listView?locale=en 界面显示为英文
 <center>![英文](http://kiritor.github.io/img/i18n_02.jpg)</center>
 &nbsp;&nbsp;&nbsp;&nbsp;OK,到此关于Spring MVC配合Velocity国际化配置也就到此为止了.
+
+&nbsp;&nbsp;&nbsp;&nbsp;项目地址:[https://github.com/kiritor/hr](https://github.com/kiritor/hr)
+
+&nbsp;&nbsp;&nbsp;&nbsp;需要说明的是,该项目使用的是基于Cookie的国际化配置,其他方式参考本文
