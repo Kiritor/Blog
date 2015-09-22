@@ -1,0 +1,61 @@
+<div class="resume">
+    <ul id="centerwell">
+        <li id="aboutMe">
+            <h3></h3>
+            <div>
+                <h2 style="margin-top:10px;">Profile-About Me</h2>
+                <label>姓名:梁 涛</label>
+                <label>出生日期:1991/02/27</label>
+                <label style="margin-right:20px">电话:18883251958</label>
+                </br>
+                <label style="margin-right:20px">学校:西南大学 计算机科学与技术</label>
+                <label>邮件:1406754158@qq.com</label>
+                <label>Website:<a href="kiritor.github.io">kiritor.github.io</a>
+                </label>
+            </div>
+
+        </li>
+        <li id="close" style="float:right;width:72px;">
+            <h3></h3>
+
+        </li>
+    </ul>
+    <script>
+        $(document).ready(function() {
+            var $centerwell_first = $('#centerwell li:first');
+            /* $centerwell_first.animate({
+            width: '400px'
+        }, 300);
+        $centerwell_first.find('h3').animate({}, 300);
+       */
+            /*'#centerwell li').click(function() {
+            window.open($(this).find('a').attr('href'));
+        });
+        */
+            $('#centerwell li').mouseenter(function() {
+                if (!$(this).is(':animated') && $(this).attr("id") != "close") {
+                    $(this).animate({
+                        width: '600'
+                    }, 300).siblings().not("#close").animate({
+                        width: '140px'
+                    }, 300);
+
+                    $(this).find('h3').animate({
+                        backgroundPosition: '-140px'
+                    }, 300).parent().siblings().find('h3').animate({
+                        backgroundPosition: '0px'
+                    }, 300);
+                }
+
+            });
+            $("#close").mouseenter(function() {
+                $('#centerwell li:not(#close)').animate({
+                    width: '140px'
+                }, 300);
+                $('#centerwell li:not(#close)').find("h3").animate({
+                    backgroundPosition: '0px'
+                }, 300);
+            });
+        });
+    </script>
+</div>
