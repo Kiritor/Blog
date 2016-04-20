@@ -11,6 +11,7 @@ tags: [mac]
 如果输出的事:bash,sh,zsh,那么就是Bourne Shell的一个变种.
 Max OS X 10.2之前默认的是C Shell.
 Mac os X 10.3之后默认的是Bourne Shell.
+<!--more-->
 ## Mac环境变量配置
 如果是Bourne Shell设置环境变量的地方如下
 ### ./etc/profile
