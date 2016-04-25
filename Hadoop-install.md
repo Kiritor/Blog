@@ -33,7 +33,7 @@ LCore:~ lcore$
 ## 下载Hadoop
 下载Hadoop安装包有两种方式:
 1、直接官网下载
-[http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.1.tar.gz]http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.2.tar.gz
+[http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.1.tar.gz](http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.2.tar.gz)
 2、使用shell进行下载,命令如下
 ```bash
 wget http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.2.tar.gz
