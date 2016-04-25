@@ -1,5 +1,5 @@
 layout: post
-title: Mac下Hadoop2.7.x安装与配置(wordcount运行)
+title: Mac下Hadoop2.7.x配置伪分布环境(wordcount运行)
 category: work
 date: 2016-04-18 23:34:07
 tags: [hadoop]
@@ -15,6 +15,7 @@ tags: [hadoop]
 ```bash
 ssh localhost
 ```
+<!--more-->
 如果出现错误提示信息,表示当前用户没有权限.更改设置如下:进入system prference-->sharing-->勾选remote login,并设置allow access for all users.再次输入"ssh localhost"输入密码确认,即可看到ssh成功.
 比较麻烦的是,每次都会要求输入用户密码.Hadoop提供了无密码验证登陆的方式:
 >    1. 创建ssh-key,命令:ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
@@ -136,4 +137,28 @@ sbin/start-dfs.sh
 ```
 成功的截图如下:
 <center>![name](/img/hadoop-namenode.png)</center>
-
+### 查看进程信息
+使用jps命令查看进程出现如下信息表示DataNode和NameNode都已经开启
+```bash
+4368 Jps
+3202 NameNode
+3411 SecondaryNameNode
+3295 DataNode
+```
+### 查看Web UI
+在浏览器中输入:[http://localhost:50070](http://localhost:50070),即可查看相关信息,截图如下:
+<center>![webui](/img/hadoop-webui.png)</center>
+此时,hadoop伪分布式集成环境已经搭建完成,接下来运行一下WordCount例子.
+## 运行WordCount
+1.新建一个测试文件,内容随意(这里我把一篇博客文章做测试)
+2.在HDFS中新建测试文件夹test.命令为:bin/hdfs dfs -mkdir /test,使用"bin/hdfs dfs -ls"命令查看是否新建成功.
+3.上传测试文件,命令如下:bin/hdfs dfs -put ~/dev/blog/hexo.md /test/,可使用之前命令查看是否上传成功.
+4.运行wordcount,命令如下:bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /test/hexo.md /test/out,运行完成后,在/test目录下生成名为out的目录,其内容如下所示:
+```bash
+-rw-r--r--   1 lcore supergroup          0 2016-04-25 14:28 /test/out/_SUCCESS
+-rw-r--r--   1 lcore supergroup       1470 2016-04-25 14:28 /test/out/part-r-00000
+```
+表示已经运行成功,结果存放在part-r-00000文件中
+5.使用命令:bin/hadoop fs -cat /test/out/part-r-00000 查看结果为如下图所示:
+<center>![wordcount](/img/hadoop-wordcount.png)</center>
+到此,hadoop-2.7.2伪分布式配置到此结束了!
