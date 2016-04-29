@@ -1,7 +1,7 @@
 layout: post
 title: Mac下Hadoop2.7.x配置伪分布环境(wordcount运行)
 category: work
-date: 2016-04-18 23:34:07
+date: 2016-04-28 23:34:07
 tags: [hadoop]
 ---
 关于Hadoop的安装与配置其实挺多了,不过大多是1.x.x系列的.将自己的安装配置做个笔记记录.
@@ -20,7 +20,7 @@ ssh localhost
 比较麻烦的是,每次都会要求输入用户密码.Hadoop提供了无密码验证登陆的方式:
 >    1. 创建ssh-key,命令:ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
 >       ssh-keygen表示生成秘钥:-t表示秘钥类型;-P用于提供密语;-f指定生成的秘钥文件.这个命令在"~/.ssh"文件夹下创建两个文件
->       id_dsa喝id_das_pub,是ssh的一对私钥和公钥
+>       id_dsa和id_das_pub,是ssh的一对私钥和公钥
 >    2. 将公钥和私钥追加到授权的key中,输入:cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
 
 然后就可以无密码验证登陆了,成功后输入如下信息:
@@ -33,7 +33,7 @@ LCore:~ lcore$
 ## 下载Hadoop
 下载Hadoop安装包有两种方式:
 1、直接官网下载
-[http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.1.tar.gz]http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.2.tar.gz
+[http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.1.tar.gz](http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.2.tar.gz)
 2、使用shell进行下载,命令如下
 ```bash
 wget http://mirrors.hust.edu.cn/apache/hadoop/core/stable/hadoop-2.7.2.tar.gz
