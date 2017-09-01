@@ -141,7 +141,7 @@ spring.messages.encoding=UTF-8
 2、jar包运行.
 通过maven插件执行install命令创建一个可执行的jar(需要注意的是会额外生成一个XXX.jar.original的文件,这是Spring Boot重新打包前maven创建的原始jar文件)使用命令java -jar运行应用,例如:
 ```bash
-java -jar springboot01-1.0.jar.jar
+java -jar springboot01-1.0.jar
 ```
 3、Maven插件运行
 也可以通过maven插件来运行,定位到工程目录下，使用如下命令:
