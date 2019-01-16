@@ -4,13 +4,13 @@ tags: [easyui,draggable]
 categories: front
 ---
 前面学习了easyui基础的解析器,加载器。对于他们入门阶段我们只需简单的了解下即可，毕竟先阶段并不会太过深入。接下来根据easyui官网文档的顺序安排学习下Draggable插件。
-#Draggable是什么
+# Draggable是什么
 Draggable是easyui中用于实现拖拽功能的一个插件。利用它，我们可以实现控件的拖拽效果。
 Draggble覆盖默认值$.fn.draggable.defaults。 
 <!--more-->
-#Draggable
+# Draggable
 下面看看官网对于Draggable的描述吧。 
-##属性
+## 属性
 其属性请参阅官网
 一个简单的例子,代码如下:
 ```bash
@@ -51,11 +51,11 @@ Draggble覆盖默认值$.fn.draggable.defaults。
 
 	</html>
 ```
-##事件
+ ## 事件
  Draggable的事件还是比较好理解的，具体参考官网:
- ##方法
+ ## 方法
  参阅官网
- ##使用方式
+ ## 使用方式
  两种使用的方式：
  1、通过html标记创建,方法如下:
  ```bash
@@ -74,6 +74,6 @@ Draggble覆盖默认值$.fn.draggable.defaults。
 		});
 	</script>
  ```
-#Demo
+# Demo
 对于Draggable，官网提供了一些个例子地址如下:http://www.jeasyui.com/demo/main/index.phpplugin=Draggable&theme=default&dir=ltr&pitem=
 初学来说的话,上述的demo例子就够了。over!

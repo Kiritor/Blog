@@ -3,10 +3,10 @@ date: 2015-03-26 23:58:08
 tags: [EasyUI,Parser]
 categories: front
 ---
-#前言
+# 前言
 JQuery EasyUI提供的组件包括功能强大的DataGrid,TreeGrid、面板、下拉组合等。用户可以组合使用这些组件,也可以单独使用其中一个。(使用的形式是以插件的方式提供的)
 <!--more-->
-#EasyUI体系结构
+# EasyUI体系结构
 EasyUI所有的插件主要分为六大部分。Base基础、Layout布局、Menu&Button、Form表单、Window窗口等。从最基础的开始先掌握EasyUI基础部分。Base部分包含了八个基础插件分别为:
     1. parser(解析器)
     2. easyloader(加载器)
@@ -17,7 +17,7 @@ EasyUI所有的插件主要分为六大部分。Base基础、Layout布局、Menu
     7. progressbar(进度条)
     8. searchbox(搜索框) 
 我们先从parser开始。
-#Parser(解析器)
+# Parser(解析器)
 解析器是easyui非常重要的基础组件,在easyui中我们能够简单的通过class定义一个组件,从而渲染出非常好的交互效果。就是通过parser进行解析的。parser会获取所有在指定范围内定义为easyui组件的class定义,并且根据后缀定义把当前节点解析渲染成特定的组件。
 parser可以有两种使用方法: 
 ```bash
@@ -68,11 +68,11 @@ $.parser.onComplete 	context	当语法解析完成之后触发的event
 ```
 上面的例子实际运行的效果是,当dom节点在解析的过程中,界面上会弹出类似"数据正在加载中",parser解析完毕之后,遮罩层就消失，正常显示页面内（弹出数据加载完成弹出框）。
 
-#Parser(解析器)应用场景
+# Parser(解析器)应用场景
 上面的学习中我们知道,easyui根据class就能正常的渲染页面都是靠parser。通常情况下我们在开发的时候并不会用到解析器。下面来看看神马时候我们需要用到解析器。
-##自动调用parser
+## 自动调用parser
 最主要的运用场景,只要我们书写相应的class,easyui就能成功的渲染页面,这是因为解析器在默认情况下,会在dom加载完成的时候($(docunment).ready)被调用,而且是渲染整个页面。
-##手动调用parser
+## 手动调用parser
 需要手动调用的情况是:当页面已经加载完成,但是此时我们使用js生成的DOM中包含了easyui支持的class,并且我们也有将其渲染成easyui组件的需求。在这种情况下手动调用parser就不可避免了。
 以如下代码为例:
 ```bash

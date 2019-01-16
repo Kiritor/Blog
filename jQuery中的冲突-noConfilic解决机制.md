@@ -78,7 +78,7 @@ $("content").style.display = 'none';
 // 另一个版本 jQuery 的代码
 jQuery("div > p").hide();
 ```
-#解决冲突方式
+# 解决冲突方式
 
  冲突的方式无非3中情况：
  1、其他库先于jQuery引用(被占用).
@@ -142,6 +142,6 @@ jQuery.noConflict();       //将变量$控制权让渡
 	// 另一个版本 jQuery 的代码
 	jQuery("div > p").hide();
 ```
- #最后
+ # 最后
    jQuery解决冲突的机制是十分灵活的,有了这些冲突解决方案,就可以在项目中安心的使用jQuery了。
 

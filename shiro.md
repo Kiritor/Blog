@@ -3,13 +3,14 @@ date: 2015-09-18 15:35:01
 tags: [shiro]
 categories: java
 ---
-##简介
+## 简介
 Apache Shiro是apache的一个强大而灵活的开源安全框架,它干净利落的处理身份认证、授权、企业会话管理和加密.Shiro首要的目标是易于使用和理解,提供一个干净而直观的API,来简化开发人员在使用它们的应用程序安全上的努力.这也是Shiro可能并没有Spring Security使用的人却越来越多的因素之一吧.
 
 Shiro不强制依赖其他第三方框架、容器、或者应用服务器,不仅可以应用在JavaSE环境,也可以用在JavaEE环境.
 
-##Shiro Features
+## Shiro Features
 Apache Shiro是一个拥有许多功能的综合性的程序安全框架,帮助我们完成:认证、授权，加密、会话管理、与web集成、缓存等功能.shiro提供的功能如下图:
+<!-- more -->
 <center>![Shiro Features](http://kiritor.github.io/img/shiro_features.png)</center>
 Shiro开发团队把身份验证、授权、会话管理、加密作为核心关注点--应用程序四大基石.
 *	**Authentication:** 身份认证/登录,验证用户是不是具有相应的身份;
@@ -24,9 +25,9 @@ Shiro同样提供了额外的功能来加强在不同环境所关注的方面;
 *   **Run As:**  允许一个用户假设为另一个用户的功能;
 *   **Remember me:**  记住我,十分常用的功能,登录之后,下次就不用登录了;
 **Shiro提供了这么多的可插拔化的功能,使用时可以根据需要来选择,但是,Shiro不会去维护系统用户,更不会去维护系统的权限规则.针对不同系统,结合自身业务权限设计模型千差万别,Shiro不可能统一维护,也不会提供一套方案.因此对于权限仍然需要我们自行设计/提供,然后通过相应的接口注入给Shiro.**
-##Shiro Architecture
+## Shiro Architecture
 Shiro的架构主要有3个主要的概念:Subject，SecurityManager,Realms.
-###High-Level Overview
+### High-Level Overview
 下面的关系图是关于上面上个组件是如何交互的高级概述:
 <center>![shiro_high](http://kiritor.github.io/img/shiro_high.png)</center>
 可以看到,直接交互对象是Subject,其每个对象的含义:
@@ -39,7 +40,7 @@ Shiro的架构主要有3个主要的概念:Subject，SecurityManager,Realms.
 
 上面说到了Shiro不维护用户/权限,而是通过Realm让开发人员自己注入.
 
-###Shiro Architecture
+### Shiro Architecture
 下图展示的是Shiro内部详细的架构图:
 <center>![shiro_detail](http://kiritor.github.io/img/shiro_detail.png)</center>
 *    **Subject:*** 主体,当前与软件进行交互的实体(用户,第三方服务)等.

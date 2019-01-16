@@ -3,16 +3,16 @@ date: 2015-09-28 15:35:01
 tags: [shiro]
 categories: java
 ---
-##Authentication
-Authentication是指身份验证的过程--即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.
+## Authentication
+Authentication是指身份验证的过程:即在应用中能证明他就是他本人.一般需要提供身份标识信息例如:ID,用户名/密码等.
 在Shiro中,用户需要提供Principals和Credentials给Shiro,从而来验证用户的身份.
 **Principals:** 身份,即是Subject的标识属性,可以是任何东西,诸如用户名、邮箱等,唯一即可.一个主题可以有多个Principal,但是只有一个Primary principal一般是用户名/密码.
 **Credentials:** 证明/凭据,只有主体才知道的安全值,如密码/数字证书.
 principal/credential配对最常见的就是用户名/密码.
 <!--more-->
-##Demo
+## Demo
 在实际研究Shiro身份认证流程之前,先搭建一个架子,进行简单的验证.
-###Maven构建
+### Maven构建
 添加junit、common-logging以及shiro-core等依赖.
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -56,7 +56,7 @@ principal/credential配对最常见的就是用户名/密码.
 
 </project>
 ```
-###shiro配置文件ini方式(shiro.ini)
+### shiro配置文件ini方式(shiro.ini)
 简洁起见,这里仅仅配置一个用户名/密码(principal/credential),其他使用shiro默认配置.
 ```xml
 [users]
@@ -90,7 +90,7 @@ public void testHello() {
 ```
 关于上述demo的执行过程,注释已经说得很明白了,需要提及的是,在调用subject.login()身份验证失败时,请捕获AuthenticationException或其子类,常见的如DisabledAccountException(禁用的账户)、LockedAccountException(锁定的账户)、UnknowAccountException(错误的账户)等,具体情况如下图:
 <center>![ShiroExceptionStructure](/img/shiroExceptionStructure.png)</center>
-##身份认证流程
+## 身份认证流程
 demo中可以简单的了解Shiro的认证过程,接下来从shiro内部体系结构了解其认证流程:
 <center>![ShiroAuthentication](/img/shiroAuthentication.png)</center>
 **流程如下:**
@@ -102,16 +102,16 @@ demo中可以简单的了解Shiro的认证过程,接下来从shiro内部体系�
 阅读源码内部的的流程还是比较复杂的,大致的时序图如下:
 <center>![SDShiroAuthentication](/img/sdShiroAuthentication.png)</center>
 上述只是一个大致的流程,实际情况复杂的多.
-##Realm
+## Realm
 Realm:安全数据源,用于获取安全数据(用户、角色、权限规则),shiro通过SecurityManager验证用户,必须通过Realm获取相应的用户进行比较以确定用户是否合法.同样也是通过Realm得到用户相应的角色/权限控制用户的访问权限.shiro默认提供的Realm如下图:
-<center>![shiro-realm](/img/shiro-realm.png)</center>
+<center>![shiro-realm](/img/shiro-Realm.png)</center>
 上述图中可以知道的是,如果我们实现自定义的Realm一般继承AuthorizingRealm(授权)即可,因为其继承了AuthenticationgRealm和CachingRealm实现了身份验证和缓存.主要实现:
 >   **IniRealm:** [users]部分指定其用户名/密码及其角色,[roles]部分指定其角色,权限信息.demo中就是使用的此方式.
 >   **JdbcRealm:** 通过SQL查询相应的信息,其相应的sql可以查阅源码查看,也可以通过api进行自定义SQL.
 
 仔细思考一下可以知道,在实际中我们一般不会使用shiro提供的Realm,前面也说了shiro不维护用户/权限,仅仅通过Realm进行注入.Shiro提供的Realm总归不够灵活,因此正如上述所说,一般我们通过继承AuthorizingRealm实现自定义的Realm(结合自身的dao层,获取安全数据).
 接下来了解下Realm如何使用.
-###单Realm配置
+### 单Realm配置
 1、 自定义Realm实现:
 ```java
 package com.shiro_01.realm;
@@ -189,7 +189,7 @@ public void testCustomRealm() {
 	subject.logout();
 }
 ```
-###JDBC Realm
+### JDBC Realm
 Shiro提供的JDBC Realm使用也是比较简单且较为灵活的,使用方法如下:
 1、maven添加数据库驱动及druid连接池,参考上述pom.xml
 2、建立测试数据库及数据表数据,建表:users、user_roles,roles_permissions,并且添加一个测试用户:
@@ -263,7 +263,7 @@ securityManager.realms=$jdbcRealm
 
 4、测试代码
 测试代码和上面并无太大区别,主要是初始化SecurityManager使用的配置文件不同
-###多Realm配置
+### 多Realm配置
 在进行多Realm配置之前,有必要了解下,shiro是如何进行验证的,在之前的shiro验证流程图中已经了解到Subject.login()会交由DefaultSecurityManager的Authenticator进行验证authenticate().**Authenticator的职责是验证用户账号,是ShiroAPI中身份验证的核心入口点.**
 跟踪源码,Authenticator还有一个ModularRealmAuthenticator实现,实际上是它委托给多个(也可以是单个)Realm进行验证,多个Realm的验证规则通过**AuthenticationStrategy接口**指定,阅读源码可知道,ModularRealmAuthenticator构造器默认指定的是AtleastOneSuccessfulStrategy(只要有一个Realm验证成功即可),且返回所有验证成功的认证信息.
 具体来说Shiro默认提供的验证规则有如下几个:

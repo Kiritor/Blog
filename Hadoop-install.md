@@ -1,7 +1,7 @@
 layout: post
 title: Mac下Hadoop2.7.x配置伪分布环境(wordcount运行)
 category: work
-date: 2016-04-28 23:34:07
+date: 2016-04-24 23:34:07
 tags: [hadoop]
 ---
 关于Hadoop的安装与配置其实挺多了,不过大多是1.x.x系列的.将自己的安装配置做个笔记记录.

@@ -4,23 +4,23 @@ tags: [easyui,loader]
 categories: front
 ---
 在了解完easyui的parser(解析器)之后,接下来就是easyloader(简单加载器)的学习了。
-#什么是EasyLoader
+# 什么是EasyLoader
 正如其名字一样easyloader的作用是为了动态的加载组件所需的js文件,这体现了EasyUI作为轻量级框架对性能的合理掌握（可以动态的加载所需组件）,不过一般而言很少使用到easyloader(会给使用者带来一定的难度)。那么使用EasyLoader的场景有哪些呢？
 <!--more-->
-#EasyLoader的使用场景
+# EasyLoader的使用场景
     ● 出于性能的考虑,不一次性的加载easyui核心js、css文件,而是先展示基础文档结构。
     ● 项目只是简单的用到easyui的几个组件,此时可以按需加载该组件的js和css文件。
     ● 你需要使用某个组件,但是不知道该组件是否依赖于其他组件(简单的js引用无法达到),使用easyloader可以自动加载依赖组件。
     ● 你需要把JQuery基础库和自己实现的js结合起来，以达到更好的展示性能。 
-#EasyLoader加载器
+# EasyLoader加载器
 简单的了解了什么是easyloader以及其大概的使用场景,接下来看看easyloader的属性、事件和方法。
-#properties
+# properties
 easyloader有7个属性，具体可以参加官网
-#Event
+# Event
 加载器包含两个事件,具体参见官网
-#Method
+# Method
 加载器只有一个方法:load,其参数为module,callback(回调函数)，载入特定的模块，当载入的成功的时候调用该回调函数有效的模块参数可以使一个单一的模块名称、存储模块名称的数组、css样式文件、js脚本文件。
-#EasyLoader使用
+# EasyLoader使用
 接下来我们着眼于easyloader如何使用，通过上面属性表中的modules，不难猜到这个属性就是easyui定义模块用的。modules本质上来说是一个json格式对象。其形式如下: 
 ```bash
       modules = {

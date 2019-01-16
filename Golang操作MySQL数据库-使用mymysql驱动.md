@@ -4,10 +4,10 @@ tags: [mymysql]
 categories: golang
 ---
 玩golang也有几周了,了解了基本的语法之后,做了一个简单的webdemo(反射、数据库操作、路由等)，对于系统来说很多都离不开数据库。此篇文章就是对golang如何进行数据库(mysql)操作进行一下尝试,使用的数据库驱动为mymysql
-##MyMySQL驱动
+## MyMySQL驱动
 MyMySQL的原作者是波兰的[ziutek](https://github.com/ziutek/mymysql),他根据mysql的协议标准使用go语言实现了mymysql包,该包可以用在mysql4.1或更高的版本上,且在5.x系列版本上经过了项目的实际验证。
 <!--more-->
-##安装
+## 安装
 安装mymysql包必须要先安装如下包:
 ```bash
 go get github.com/ziutek/mymysql/thrsafe
@@ -25,9 +25,9 @@ go get github.com/ziutek/mymysql
 ####4、autorc：自动重新连接接口
 ####5、godrv:go提供的database/sql的实现
 OK,也就是说,使用mymysql驱动,我们可以灵活多样的操作mysql数据库了,下面看一些实际的例子。
-##实例
+## 实例
 上面已经说了,mymysql提供了5个子包,我们可以选择灵活的搭配来操作数据库,例如线程安全与非线程安全(到底如何选择这点是基于业务是否要求多线程,线程安全必然更加耗费性能)。
-##mysql+thrsafe/native
+## mysql+thrsafe/native
 首先尝试一下mysql子包的用法,通过查阅文档,编写的代码如下:
 ```bash
 package main
@@ -62,7 +62,7 @@ func main() {
 }
 ```
 上述代码只是一个非常简单的操作,详细的细节处理(预处理,元数据),可以查阅文档。
-##database/sql+godrv
+## database/sql+godrv
 mymysql也提供了golang原生的操作mysql的实现,使用这种方式的兼容性更加可靠,也是推荐的做法
 ```bash
 package main
@@ -132,7 +132,7 @@ func main() {
     }
 }
 ```
-##事务处理
+## 事务处理
 mymysql驱动同样支持事务处理,一个简单的例子(基于mysql子包):
 ```bash
 package main
@@ -180,7 +180,7 @@ func main() {
 	tr.Commit()   //事务提交
 }
 ```
-##Type Mapping
+## Type Mapping
 我们可以使用格式化的方式嵌入到查询sql中去,例如:
 ```bash
 rows, res, err := db.Query("select * from X where id > %d", id)

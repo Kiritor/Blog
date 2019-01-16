@@ -9,27 +9,27 @@ categories: golang
 <!--more-->
 <center>![go_time](http://kiritor.github.io/img/go_time.png)</center>
 &nbsp;&nbsp;&nbsp;&nbsp;接下来介绍一些比较常用的方法和使用
-##时间戳
+## 时间戳
 &nbsp;&nbsp;&nbsp;&nbsp;获取当前的时间戳:
 ```GO
     t := time.Now().Unix()
     fmt.Println(t)
 	//1429081897(单位秒)
 ```
-##格式化时间
+## 格式化时间
 &nbsp;&nbsp;&nbsp;&nbsp;最常见的需求,实现方式如下:
 ```GO
 fmt.Println(time.Now().Format("2006-01-02 15:04:05"))  // 这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4-5
 //2014-01-07 09:42:20
 ```
-##时间戳转换为格式化时间
+## 时间戳转换为格式化时间
 &nbsp;&nbsp;&nbsp;&nbsp;思路是先将时间戳转化为时间,在转化为格式化字符串
 ```GO
 str_time := time.Unix(1389058332, 0).Format("2006-01-02 15:04:05")
 fmt.Println(str_time)
 //2014-01-07 09:32:12
 ```
-##格式化字符串转时间
+## 格式化字符串转时间
 &nbsp;&nbsp;&nbsp;&nbsp;同样是先将字符串转换为时间,在转化为时间戳,两种方法:
 &nbsp;&nbsp;&nbsp;&nbsp;方法一:
 ```GO
@@ -47,9 +47,9 @@ if err == nil {
 }
 //1389171881
 ```
-##时间比较
+## 时间比较
 &nbsp;&nbsp;&nbsp;&nbsp;Time的比较时使用Before,After,Equal方法,返回值为bool类型
-##输出星期信息
+## 输出星期信息
 &nbsp;&nbsp;&nbsp;&nbsp;输出星期信息也比较简单,方法如下:
 ```GO
 fmt.Println(time.Now().Weekday())

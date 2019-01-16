@@ -6,7 +6,7 @@ categories: front
    初学jQuery时,经常分辨不清楚哪些是jQuery对象,哪些是DOM对象。这是十分不好的现象。必须明确区分何为jQuery对象、何为DOM对象,对于后续的学习、理解才更方便。
 
    先从DOM对象开始,之后在谈谈jQuery对象(jq对象基于DOM对象)。
-#DOM、DOM对象
+# DOM、DOM对象
    DOM(Document Object Model,文档对象模型),DOM是W3C的标准。定义了访问HTML和XML文档的标准。
 文档对象模型是中立于平台和语言的接口,允许程序和脚本动态的访问和更新文档的内容、结构以及样式,更具体来说就是我们可以通过js、jQuery代码动态的更新某个html元素的样式、属性等。
 <!--more-->
@@ -21,19 +21,19 @@ DOM节点
    2、每个HTML元素是一个元素节点
    3、每个HTML属性是一个属性节点
    4、注释是注释节点
-#HTML DOM节点树
+# HTML DOM节点树
    HTML DOM将HTML文档视作树结构。这种结构成为节点树:
    一个实例：
    <center>![Dom树](http://liangtao-wordpress.stor.sinaapp.com/uploads/2014/06/ct_htmltree.gif)</center>
    关于DOM的介绍就这么多了,详细了解的话可查阅W3CSCHOOL手册。
-#DOM对象
+# DOM对象
 
    简单的来说通过JavaScript中的getElementsByTagName或者getElementById来获取元素节点,得到的DOM元素就是DOM对象。DOM对象可以使用JavaScript中的方法,简单实例:
 ```bash
 var obj = document.getElementById("id");//获取DOM对象
 var ObjHTML = obj.innerHTML;                //使用js方法
 ```
-#jQuery对象
+# jQuery对象
 
    jQuery对象就是通过jQuery包装DOM对象所产生的对象。
 
@@ -48,7 +48,7 @@ $("#foo").html();   //获取id为foo的元素内的html代码.html()为jQuery里
 document.getElementById("id").innerHTML
 ```
 
-#相互转换
+# 相互转换
 
    核心提示:jQuery选择器得到的jquery对象和标准的DOM对象是两种不同的对象,jquery对象不能使用DOM对象的属性方法。同样的DOM对象也不能使用jquery对象的方法、属性。
 
@@ -60,7 +60,7 @@ var $test = jQuery 对象;        //jquery变量
 var test = DOM 对象;           //dom变量
 ```
 
-##jQuery对象->DOM对象
+## jQuery对象->DOM对象
 
    jQuery对象是不能使用DOM中的方法的,但是如果对jQuery对象的方法不熟悉,或者jQuery对象没有封装想要的方法,不得不使用DOM对象的时候,可以通过以下两种方式将jQuery对象转换为DOM对象。
 
@@ -76,7 +76,7 @@ var $vars = $("#vars");           //jQuery对象
 var test = $vars.get(0);             //DOM对象
 console.info(test.checked);    //检查该对象是否选中
 ```
-##DOM对象->jQuery对象
+## DOM对象->jQuery对象
 
    对于一个DOM对象,只需要用$()将DOM对象包装起来就可以转换为jQuery对象了。
 ```bash

@@ -3,7 +3,7 @@ date: 2015-04-14 17:22:49
 tags: [oracle,dblink,hibernate]
 categories: work
 ---
-##前言
+## 前言
 &nbsp;&nbsp;&nbsp;&nbsp;项目开发中,涉及到不同模块之间的数据流转,但是模块间的底层数据又不在同一个数据库中,要实现不同模块间的数据交互方法其实很多。比较常见的两种方式便是webService和dblink。
 
 &nbsp;&nbsp;&nbsp;&nbsp;webService方式即是模块之间各自提供数据流入接口和流出接口,这种方式需要开发,而且由于业务变化很容易造成接口的调整,好处是各业务模块的底层数据库是完全耦合的。在大型系统(模块多且之间交互复杂)不利。
@@ -12,12 +12,12 @@ categories: work
 <!--more-->
 
 &nbsp;&nbsp;&nbsp;&nbsp;经过一些权衡,以及实际项目开发的情况,选择了以dblink的方式来解决各模块之间数据流转的问题
-##dblink概述
+## dblink概述
 &nbsp;&nbsp;&nbsp;&nbsp;dblink定义一个数据库到另一个数据库路径的对象,它允许你查询远程表及执行远程程序,在任何分布式的生产环境中,dblink都是必要的(结合物化视图),而且dblink是单向的连接。
 dblink存在于多个数据库之间,因此在创建dblink之前需要保证本地库和远程库的网络连接是正确的,TNS Ping要能成功,而且该用户在远程数据库上有相应的访问权限。
 
 对于dblink就不深入介绍了,比较有参考意义的一篇文章:[Oracle dblink详解](http://czmmiao.iteye.com/blog/1236562)
-##dblink的创建
+## dblink的创建
 创建dblink有两种方式:基于TNS Name和不基于TNS Name
 首先是基于TNS Name,语法如下:
 ```SQL
@@ -39,7 +39,7 @@ dblink存在于多个数据库之间,因此在创建dblink之前需要保证本�
 	)';
 
 ```
-##dblink的使用
+## dblink的使用
 dblink的使用方式很简单,一个简单的例子如下:
 ```SQL
 SELECT * FROM table_name@database link;
@@ -51,7 +51,7 @@ SELECT * FROM table_name;
 CREATE VIEW table_name AS SELECT * FROM  table_name@database link;
 ```
 对于dblink的更详细的一些操作,可以参考上述链接(大牛的文章),这里就不过多做介绍了。
-##Hibernate使用dblink
+## Hibernate使用dblink
 &nbsp;&nbsp;&nbsp;&nbsp;了解了dblink理论以及dblink的使用,接下来的重点就是如何将其用于生产环境中了,这里已我自己实际中遇到的例子为例.
 首先是创建dblink:
 ```SQL
@@ -109,7 +109,7 @@ open_links_per_instance：指每个实例最多允许的dblink个数
 3、重新启动数据库
 修改之后需要重新启动数据库该设置才能够生效。
 之后在hibernate中就可以正常的使用dblink了。
-##问题补充1
+## 问题补充1
 &nbsp;&nbsp;&nbsp;&nbsp在实际使用的过程中,还出现了一个问题,那就是由于oracle版本不一致导致的,一个为oracle10g一个为oracle11g。错误信息如下:
 ```bash
 ORA-01017: 用户名/口令无效; 登录被拒绝
@@ -129,7 +129,7 @@ USING '(DESCRIPTION =
 )
 )';
 ```
-##问题补充2
+## 问题补充2
 &nbsp;&nbsp;&nbsp;&nbsp在实际使用dblink时发现了一个问题:
 ```bash
 ORA--22992:无法使用远程表选择的LOB定位器，database link

@@ -21,7 +21,7 @@ import "./model"    --相对路径,不推荐
 import "XXX/model"  --个gopath/src/XXX下的model模块,最常见
 ```
 不过,在阅读某些开源项目时,会看到一些令人费解的import方式,下面来一一探寻下:
-#点操作
+# 点操作
 我们有时候可以看到如下的导入方式
 ```bash
 import (. "fmt")
@@ -29,14 +29,14 @@ import (. "fmt")
 Println("go")
 ```
 这个点操作的含义就是这个包导入之后,使用该包函数的使用可以省略前缀
-#别名操作
+# 别名操作
 别名操作可以把包名换成一个容易记忆的名字(对于那些包名过长的)
 ```bash
 import (f "fmt")
 ...
 f.Println("go")
 ```
-#"_"操作
+# "_"操作
 这个操作比较令人费解,beego里面就有使用到(bee new xx生成的)
 ```bash
 package main
